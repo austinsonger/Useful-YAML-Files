@@ -1,0 +1,230 @@
+data_uses:
+  - key: analytics
+    name: Analytics
+    description: Provides analytics for activities such as system and advertising performance reporting, insights and fraud detection.
+    parent_key: null
+    children:
+      - key: analytics.reporting.ad_performance
+        name: Ad Performance Reporting
+        description: Provides analytics for reporting of advertising performance.
+        parent_key: analytics.reporting
+      - key: analytics.reporting.content_performance
+        name: Content Performance Reporting
+        description: Analytics for reporting on content performance.
+        parent_key: analytics.reporting
+      - key: analytics.reporting.campaign_insights
+        name: Campaign Insights Reporting
+        description: Provides analytics for reporting of campaign insights related to advertising and promotion activities.
+        parent_key: analytics.reporting
+      - key: analytics.reporting.system
+        name: System Activity Reporting
+        description: Provides analytics for reporting on system activity.
+        parent_key: analytics.reporting
+      - key: analytics.reporting.system.performance
+        name: System Performance Reporting
+        description: Provides analytics for reporting on system performance.
+        parent_key: analytics.reporting.system
+
+  - key: collect
+    name: Collect
+    description: Collects or stores data in order to use it for another purpose which has not yet been expressly defined.
+    parent_key: null
+
+  - key: employment
+    name: Employment
+    description: Processes data for the purpose of recruitment or employment and human resources (HR) related activities.
+    parent_key: null
+    children:
+      - key: employment.recruitment
+        name: Recruitment
+        description: Processes data of prospective employees for the purpose of recruitment.
+        parent_key: employment
+
+  - key: essential
+    name: Essential
+    description: Operates the service or product, including legal obligations, support and basic system operations.
+    parent_key: null
+    children:
+      - key: essential.fraud_detection
+        name: Fraud Detection
+        description: Detects possible fraud or misuse of the product, service, application or system.
+        parent_key: essential
+      - key: essential.legal_obligation
+        name: Legal Obligation
+        description: Provides service to meet a legal or compliance obligation such as consent management.
+        parent_key: essential
+      - key: essential.service
+        name: Essential Service
+        description: Provides the essential product, service, application or system, without which the product/service would not be possible.
+        parent_key: essential
+        children:
+          - key: essential.service.authentication
+            name: Authentication
+            description: Authenticate users to the product, service, application or system.
+            parent_key: essential.service
+          - key: essential.service.notifications
+            name: Notifications
+            description: Sends notifications about the product, service, application or system.
+            parent_key: essential.service
+            children:
+              - key: essential.service.notifications.email
+                name: Email Notifications
+                description: Sends email notifications about the product, service, application or system.
+                parent_key: essential.service.notifications
+              - key: essential.service.notifications.sms
+                name: SMS Notifications
+                description: Sends SMS notifications about the product, service, application or system.
+                parent_key: essential.service.notifications
+          - key: essential.service.operations
+            name: Operations
+            description: Essential to ensure the operation of the product, service, application or system.
+            parent_key: essential.service
+            children:
+              - key: essential.service.operations.support
+                name: Support
+                description: Provides support for the product, service, application or system.
+                parent_key: essential.service.operations
+              - key: essential.service.operations.improve
+                name: Improve
+                description: Essential to optimize and improve support for the product, service, application or system.
+                parent_key: essential.service.operations
+          - key: essential.service.payment_processing
+            name: Payment Processing
+            description: Essential to processes payments for the product, service, application or system.
+            parent_key: essential.service
+          - key: essential.service.security
+            name: Security
+            description: Essential to provide security for the product, service, application or system.
+            parent_key: essential.service
+          - key: essential.service.upgrades
+            name: System Upgrades
+            description: Provides timely system upgrade information options.
+            parent_key: essential.service
+
+  - key: finance
+    name: Finance
+    description: Enables finance and accounting activities such as audits and tax reporting.
+    parent_key: null
+
+  - key: functional
+    name: Functional
+    description: Used for specific, necessary, and legitimate purposes.
+    parent_key: null
+    children:
+      - key: functional.storage
+        name: Storage
+        description: Stores or accesses information from the device as needed when using a product, service, application, or system.
+        parent_key: functional
+      - key: functional.service
+        name: Functional Service
+        description: Functions relating to provided services, products, applications or systems.
+        parent_key: functional
+        children:
+          - key: functional.service.improve
+            name: Service Improvement
+            description: Improves the specific product, service, application or system.
+            parent_key: functional.service
+
+  - key: marketing
+    name: Marketing
+    description: Enables marketing, promotion, advertising and sales activities for the product, service, application or system.
+    parent_key: null
+    children:
+      - key: marketing.advertising
+        name: Advertising
+        description: Advertises or promotes the product, service, application or system and associated services.
+        parent_key: marketing
+        children:
+          - key: marketing.advertising.first_party
+            name: First Party Advertising
+            description: Serves advertisements based on first party data collected or derived about the user.
+            parent_key: marketing.advertising
+            children:
+              - key: marketing.advertising.first_party.contextual
+                name: Contextual Advertising
+                description: Serves advertisements based on current content being viewed by the user of the system or service.
+                parent_key: marketing.advertising.first_party
+              - key: marketing.advertising.first_party.targeted
+                name: Targeted Advertising
+                description: Targets advertisements based on data collected or derived about the user from use of the system.
+                parent_key: marketing.advertising.first_party
+          - key: marketing.advertising.third_party
+            name: Third Party Advertising
+            description: Serves advertisements based on data within the system or joined with data provided by 3rd parties.
+            parent_key: marketing.advertising
+            children:
+              - key: marketing.advertising.third_party.targeted
+                name: Third Party Targeted Advertising
+                description: Targets advertisements based on data within the system or joined with data provided by 3rd parties.
+                parent_key: marketing.advertising.third_party
+          - key: marketing.advertising.frequency_capping
+            name: Frequency Capping
+            description: Restricts the number of times a specific advertisement is shown to an individual.
+            parent_key: marketing.advertising
+          - key: marketing.advertising.negative_targeting
+            name: Negative Targeting
+            description: Enforces rules used to ensure a certain audience or group is not targeted by advertising.
+            parent_key: marketing.advertising
+          - key: marketing.advertising.profiling
+            name: Profiling
+            description: Creates audience profiles for the purpose of targeted advertising.
+            parent_key: marketing.advertising
+          - key: marketing.advertising.serving
+            name: Advertising Serving
+            description: Essential to the delivery of advertising and content.
+            parent_key: marketing.advertising
+      - key: marketing.communications
+        name: Communications
+        description: Uses combined channels to message and market to a customer, user or prospect.
+        parent_key: marketing
+        children:
+          - key: marketing.communications.email
+            name: Email Communications
+            description: Sends email marketing communications.
+            parent_key: marketing.communications
+          - key: marketing.communications.sms
+            name: SMS Communications
+            description: Sends SMS marketing communications.
+
+  - key: operations
+    name: Operations
+    description: Supports business processes necessary to the organization's operation.
+    parent_key: null
+
+  - key: personalize
+    name: Personalize
+    description: Personalizes the product, service, application or system.
+    parent_key: null
+    children:
+      - key: personalize.content
+        name: Content Personalization
+        description: Personalizes the content of the product, service, application or system.
+        parent_key: personalize
+      - key: personalize.profiling
+        name: Profiling
+        description: Creates profiles for the purpose of serving content.
+        parent_key: personalize
+      - key: personalize.system
+        name: System Personalization
+        description: Personalizes the system.
+        parent_key: personalize
+
+  - key: sales
+    name: Sales
+    description: Supports sales activities such as communications and outreach.
+    parent_key: null
+
+  - key: third_party_sharing
+    name: Third-Party Sharing
+    description: Transfers data to third parties outside of the system or service's scope.
+    parent_key: null
+    children:
+      - key: third_party_sharing.legal_obligation
+        name: Legal Obligation Sharing
+        description: Shares data for legal obligations, including contracts, applicable laws or regulations.
+        parent_key: third_party_sharing
+
+  - key: train_ai_system
+    name: Train AI System
+    description: Trains an AI system or data model for machine learning.
+    parent_key: null
