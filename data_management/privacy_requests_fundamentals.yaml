@@ -1,0 +1,72 @@
+privacy_requests_fundamentals:
+  title: Privacy Requests: Fundamentals
+  introduction: |
+    In this tutorial, we'll briefly walk through what a privacy request is, why they're important, and how to maintain compliance with privacy request requirements.
+    After reading this page, you'll be familiar with the key terms and concepts of privacy requests.
+  sections:
+    - title: What are Privacy Requests?
+      content: |
+        Privacy requests, also sometimes called Data Subject Requests (DSRs or DSARs), are the rights afforded to a user whose data is processed by an organization.
+        The rights afforded to your users are based on their location and not your organization's!
+    - title: Common Privacy Requests Rights
+      content: |
+        The rights for privacy requests afforded to a user are typically the following:
+      rights:
+        - right: Access
+          description: The user has the right to access the personal data that was collected and processed about them, and understand what purposes it was used for.
+        - right: Erasure
+          description: The user has the right to have all personal data or personally identifiable data deleted across any systems through the entire organization.
+        - right: Rectification
+          description: The user has the right to update, or correct, personal information that the user believes to be incorrect about them.
+        - right: Portability
+          description: The user has the right to obtain a machine-readable copy of their personal data such that it might be imported to another system.
+    - title: Users or Data Subjects
+      content: |
+        In privacy parlance, the owner of the personal data collected by your organization (often the user of your product) is commonly known as a *subject.
+        A Data Subject is any type of user on whom you collect and process data, such as customers or employees.
+    - title: Subject Identity Verification
+      content: |
+        When you receive a privacy request, you are responsible for confirming the identity of the subject to ensure that you do not incorrectly disclose data. To verify an identity, you may not request additional information you don't already retain about the subject. For example, you can't request a copy of a subject's drivers license if you don't already have this information.
+        Ethyca recommends using multi-factor authentication (MFA) for identity verification. Fides has built-in subject identity verification via MFA. Learn more about Subject Identity Verification here.
+    - title: Authorized Agents
+      content: |
+        In some locations, an individual subject may submit a privacy request themselves directly, or appoint a third party, typically known as an authorized agent to submit on their behalf.
+        In the event you receive a privacy request from an agent, you must honor it provided you are satisfied that the authorized agent has been appointed by the subject.
+        You should provide at least two publicly available, easy-to-find methods for your users to submit privacy requests via.
+    - title: Receiving Privacy Requests
+      content: |
+        Although there are exceptions, most global privacy regulations require you to provide at least two methods of receiving privacy requests. The methods by which you accept and process privacy requests should be easily obtainable and are typically listed on your privacy policy.
+      methods:
+        - method: Form
+          description: A publicly available form on your website or application, where a user may submit their privacy request.
+        - method: Email
+          description: A publicly available email address, where a user may submit their privacy request.
+        - method: Phone
+          description: A publicly available phone number, where a user may contact you to submit their privacy request.
+    - title: Privacy Request Processing Timeframe
+      content: |
+        The subject's location determines the regulation that applies and with it, the time limit for when a privacy request must be completed. You may request an extension in some locations, provided you notify the subject promptly of the extension - typically within 28 days (Europe) and within 45 days (USA).
+      regulations:
+        - regulation: GDPR (EEA & UK)
+          timeframe: 28 days (one calendar month)
+          extension: 56 days (three calendar months total)
+        - regulation: US State Regulations
+          timeframe: 45 days
+          extension: 45 days (90 days total)
+        - regulation: LGPD (Brazil)
+          timeframe: 15 days
+          extension: None
+    - title: Exceptions to Privacy Requests
+      content: |
+        There are some situations where you may not be able to, or required to, complete a privacy request. It's important to know when these might apply and how to manage them. In each case you should evaluate the circumstances and risks for your specific organization to ensure you're complying at all times.
+      exceptions:
+        - type: Legal / Compliance Obligation
+          description: |
+            There are certain categories of personal data that you may be required to retain in order to fulfill legal or compliance obligations. In such cases, you're permitted to retain that data in the event when an erasure request is received- provided you restrict the use of the data to that purpose.
+          example: |
+            To correctly calculate and file tax liabilities, an e-commerce company, Cookie House, will need to use order history information and the user's location. If the customer makes a subject erasure request to Cookie House, the order history and zip code may be exempt from deletion provided they are used only to file taxes, and not for any other business purpose.
+        - type: Confidentiality Risk
+          description: |
+            In circumstances where returning data to a subject might reveal confidential or sensitive information about any organization or another individual, you're not required to return that specific piece of information.
+          example: |
+            E-commerce company, Cookie House, provides an employment reference in confidence for one of their employees to another company. If the employee makes a subject access request to either company, the reference is exempt from disclosure.
