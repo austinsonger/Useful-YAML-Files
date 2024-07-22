@@ -1,0 +1,104 @@
+article_30:
+  title: Article 30
+  description: |
+    Article 30 of the GDPR (General Data Protection Regulation) is a regulation that "requires organizations that process personal data to maintain a record of their processing activities." The outcome of this is a report on an organization's data processing, typically derived from the Data Map.
+  sections:
+    - title: Condition of Processing (Special Category Data)
+      content: |
+        Where you are processing Special Category Data, in addition to a Lawful Basis, you must meet one condition of processing from those permitted which are: Explicit Consent, Necessary for Employment/Social Security, Protection of Vital Interests of person, Legitimate activity of a political, philosophical, religious or trade union body, Personal data manifestly made public by the individual, Substantial Public Interest, Health or Social Care, Medical Care, Public Health, Public Interest for archival, research or statistical use.
+    - title: Controller
+      content: |
+        Also known as a Data Controller, Controllers are typically the legal entity that makes decisions about processing activities. Ordinarily this means it's a business or organization that has collected data about a person and is processing it. Controllers have legal responsibility for the data they collect and process.
+    - title: Data Category
+      content: |
+        Data Categories are the categories of personal data collected or processed about a person. Examples include e-mail address, names, delivery address, cookie IDs and other identifiable personal data.
+    - title: Data Lineage
+      content: |
+        Data Lineage is the practice of recording the origin, or source of data, what happens to it, and where it moves to, over time. Data Lineage is helpful to give context and visibility to what is happening with personal data across a set of systems.
+    - title: Data Map
+      content: |
+        A Data Map is a view of the personal and sensitive data collected and processed by an organization, including security measures, data owners and location. A data map is typically used for compliance reporting for regulations such as the GDPR's Article 30 requirements.
+    - title: Data Processing Agreement (DPA)
+      content: |
+        A Data Processing Agreement is an agreement between a Controller (such as a company) and a processor (such as a third-party service provider) that regulates any personal data processing conducted between the two organizations. Under most data privacy regulations, Controllers are required to have a DPA between them and every third party service provider/vendor.
+    - title: Data Protection Impact Assessment (DPIA)
+      content: |
+        A Data Protection Impact Assessment (DPIA) describes a process designed to identify risks arising from the processing of personal data and to minimize these risks as much as possible. DPIAs are important tools for negating risk, and for demonstrating compliance with regulations including the GDPR, CCPA, and VCDPA.
+    - title: Data Protection Officer (DPO)
+      content: |
+        A Data Protection Officer is an individual appointed in an organization to ensure that privacy rules and regulations are fully respected. A DPO is required under the GDPR where an organization is a public authority; the organization's core activity consists of regular data processing on a large scale that should be monitored or, the organization regularly processes Special Category Data (also known as Sensitive Personal Information).
+    - title: Data Security Practices
+      content: |
+        As part of reporting requirements under Article 30 of the GDPR, a RoPA compliant Data Map report should include the security practices and measures of the organization taken for the data being processed.
+    - title: Data Source
+      content: |
+        A Data Source is the location, or origin, from which personal data was received. For example, a database might receive data from a mobile application, in which case the data source may be the mobile app.
+    - title: Data Steward
+      content: |
+        A Data Steward is the individual responsible for a system and its data processing activities. Typically the Data Steward is responsible for updating reports and information about data usage for their assigned systems. In Fides, you can assign Data Stewards to manage systems for your organization.
+    - title: Data Subject
+      content: |
+        A Data Subject refers to any individual person who can be identified, directly or indirectly, by the data collected and processed about them. Common examples of a Data Subject might be a customer or an employee of an organization.
+    - title: Data Use
+      content: |
+        A Data Use is the purpose for which data is used in a system. In Fides, a system may have more than one Data Use. For example, a CRM system may be used both for "Customer Support" and also for "Email Marketing", each of these is a Data Use.
+    - title: Dataset
+      content: |
+        A Dataset is a collection of data, typically labeled at the field level, meaning each element of data in a system is assigned a Data Category to provide context. For example, consider a database for an e-commerce organization will contain a lot of personal data, a Dataset allows you to clearly label a field of information such as Names, Email Addresses or Unique IDs. In Fides, Datasets are a powerful feature used both for Data Mapping and to automate Privacy Requests (DSARs).
+    - title: Destination Systems
+      content: |
+        A Destination System is the recipient to which data is sent. For example, a database might receive data from a mobile application, in which case the Destination System would be the database.
+    - title: Joint Controller
+      content: |
+        Where two or more Controllers jointly determine how personal data is processed. An example of this would be where a vendor processes personal data for their own purposes, as well as on behalf of your business, the vendor is also considered a joint controller.
+    - title: Legal Basis
+      content: |
+        A Legal Basis is the lawful grounds under which data is being processed. Under the GDPR personal data can only be processed under one of six legal bases. They are; Explicit Consent, Contract, Legal Obligation, Vital Interest, Public Interest, or Legitimate Interest.
+    - title: Legal Basis for Automated Decision-making or Profiling
+      content: |
+        Similar to processing Personal Data, when performing automated decision-making or profiling, you must also establish a Legal Basis from; Explicit Consent, Contract, Legal Obligation.
+    - title: Legal Basis for Special Category Data
+      content: |
+        Similar to processing Personal Data, when processing Special Category Data, you must also establish a Legal Basis in addition to which you must meet one Condition of Processing Special Category Data.
+    - title: Privacy Policy
+      content: |
+        A Privacy Policy or Privacy Notice is a statement or legal document that discloses some or all of the ways a party gathers, uses, discloses, and manages personal data.
+    - title: Processing Activity
+      content: |
+        A Processing Activity is where an organization collects, stores, shares, or transmits personal data.
+    - title: Processor
+      content: |
+        A Processor is an organization or person, public authority, or agency that processes personal data on behalf of a Controller. Third party vendors that process data on your organization's behalf, such as a CRM, are Processors.
+    - title: Purpose of Processing
+      content: |
+        A Purpose of Processing is a detailed description of the purpose for which personal data is processed in your organization. In Fides, Purpose of Processing can be thought of as a detailed description of the Data Use.
+    - title: Record of Processing Activities (RoPA)
+      content: |
+        A Record of Processing Activities, or RoPA is a report of your organization's personal data processing activities as required by Article 30 of the GDPR. A RoPA is ultimately a Data Map reporting on what your organization is doing with the Personal Data.
+    - title: Retention Period
+      content: |
+        A Retention Period is the specific length of time for which personal data is retained before it is deleted. Under most privacy regulations a specific Retention Period should be specified for all personal data.
+    - title: Responsibility
+      content: |
+        In Fides, Responsibility is used to describe who is responsible for a system. A system may be assigned one, or all of; Controller, Sub-processor, and Processor.
+    - title: Sensitive Personal Information (SPI)
+      content: |
+        Sensitive Personal Information, also known as Special Category Data (under the GDPR) is a legally defined category or personal data that requires additional protections and precautions when processing. Examples of SPI include race or ethnicity, political affiliation, religious or philosophical beliefs, trade union membership, genetic data, criminal history, credit history, biometric data, health, sexual orientation, personal identity/government identity.
+    - title: Sub-Processor
+      content: |
+        A Sub-Processor is an organization or person, public authority, or agency that processes personal data on behalf of a Processor. In order to use a Sub-Processor, the Processor needs to have the Controller's written permission, often agreed as the list of Sub-Processors in a Data Processing Agreement.
+    - title: Source Systems
+      content: |
+        A Source System is the system from which data is sent. For example, a database might receive data from a mobile application, in which case the Source System would be the mobile application.
+    - title: Special Category Data
+      content: |
+        Special Category Data, also known as Sensitive Personal Information (under the CCPA and VCDPA) is a legally defined category or personal data that requires additional protections and precautions when processing. Examples of SPI include race or ethnicity, political affiliation, religious or philosophical beliefs, trade union membership, genetic data, criminal history, credit history, biometric data, health, sexual orientation, personal identity/government identity.
+    - title: System
+      content: |
+        In Fides, a System is any entity which collects, processes, infers, transmits, or stores personal data. Examples of Systems include applications, databases, data warehouses, third party vendors, government agencies, or business departments.
+    - title: System Fides Key
+      content: |
+        In Fides, the System Key is a unique identifier for a System on the Data Map. The Fides key must be unique across all organization Systems to ensure identifiability and reporting.
+    - title: Third Party Recipients
+      content: |
+        A Third Party Recipient is any entity, whether an organization or person that receives personal data in the course of processing aside from the Controller. A Third Party Recipient might be a Government Agency such as Tax or Revenue Services or a credit reporting bureau.
