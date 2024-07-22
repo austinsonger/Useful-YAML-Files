@@ -1,0 +1,69 @@
+access_request:
+  - term: Controller
+    description: Also known as a Data Controller, Controllers are typically the legal entity that makes decisions about processing activities. Ordinarily this means it's a business or organization that has collected data about a person and is processing it. Controllers have legal responsibility for the data they collect and process.
+
+  - term: Data Category
+    description: Data Categories are the categories of personal data collected or processed about a person. Examples include e-mail address, names, delivery address, cookie IDs and other identifiable personal data.
+
+  - term: Data Lineage
+    description: Data Lineage is the practice of recording the origin, or source of data, what happens to it, and where it moves to, over time. Data Lineage is helpful to give context and visibility to what is happening with personal data across a set of systems.
+
+  - term: Data Map
+    description: A Data Map is a view of the personal and sensitive data collected and processed by an organization, including security measures, data owners and location. A data map is typically used for compliance reporting for regulations such as the GDPR's Article 30 requirements.
+
+  - term: Data Source
+    description: A Data Source is the location, or origin, from which personal data was received. For example, a database might receive data from a mobile application, in which case the data source may be the mobile app.
+
+  - term: Data Subject
+    description: A Data Subject refers to any individual person who can be identified, directly or indirectly by the data collected and processed about them. Common examples of a Data Subject might be a customer or an employee of an organization.
+
+  - term: Data Subject Request (DSR)
+    description: A Data Subject Request, sometimes referred to as a privacy request, are the various rights a user has over their data processed about them from a system. Common rights include access, erasure, rectification and portability.
+
+  - term: Data Subject Access Request (DSAR)
+    description: A Data Subject Access Request, sometimes referred to as a privacy request, is the right a user has to retrieve data processed about them from a system and understand the purposes for which it was used.
+
+  - term: Data Use
+    description: A Data Use is the purpose for which data is used in a system. In Fides, a system may have more than one Data Use. For example, a CRM system may be used both for "Customer Support" and also for "Email Marketing", each of these is a Data Use.
+
+  - term: Dataset
+    description: A Dataset is a collection of data, typically labeled at the field level, meaning each element of data in a system is assigned a Data Category to provide context. For example, consider a database for an e-commerce organization will contain a lot of personal data, a Dataset allows you to clearly label a field of information such as Names, Email Addresses or Unique IDs. In Fides, Datasets are a powerful feature used both for Data Mapping and to automate Privacy Requests (DSARs).
+
+  - term: Destination Systems
+    description: A Destination System is the recipient to which data is sent. For example, a database might receive data from a mobile application, in which case the Destination System would be the database.
+
+  - term: Erasure Request
+    description: The right of erasure, or the right to be deleted is the right of a subject to have all their personal data deleted from an organization's systems. Note an organization may have exceptional reasons to retain some data even in the event of a valid deletion request. Read about exceptions to deletion here.
+
+  - term: Portability Request
+    description: The right to portability is the right a subject has to receive a machine-readable copy of their personal data such that it can be imported by another organization.
+
+  - term: Privacy Policy
+    description: A Privacy Policy or Privacy Notice is a statement or legal document that discloses some or all of the ways a party gathers, uses, discloses, and manages personal data.
+
+  - term: Privacy Request
+    description: Sometimes referred to as a Data Subject Request are the rights afforded to a user whose data is processed by an organization. Common rights include access, erasure, rectification and portability.
+
+  - term: Processing Activity
+    description: A Processing Activity is where an organization collects, stores, shares or transmits personal data.
+
+  - term: Processor
+    description: A Processor is an organization or person, public authority or agency that processes personal data on behalf of a Controller. Third party vendors that process data on your organization's behalf, such as a CRM are Processors.
+
+  - term: Purpose of Processing
+    description: A Purpose of Processing is a detailed description of the purpose for which personal data is processed in your organization. In Fides, Purpose of Processing can be thought of as a detailed description of the Data Use.
+
+  - term: Rectification Request
+    description: The right to rectification, or the right to update, is the right of a subject to update information they believe to be incorrect about themselves in an organization's systems.
+
+  - term: Sub-Processor
+    description: A Sub-Processor is an organization or person, public authority or agency that processes personal data on behalf of a Processor. In order to use a Sub-Processor, the Processor needs to have the Controllers written permission, often agreed as the list of Sub-Processors in a Data Processing Agreement.
+
+  - term: Source Systems
+    description: A Source System is the system from which data is sent. For example, a database might receive data from a mobile application, in which case the Source System would be the mobile application.
+
+  - term: System
+    description: In Fides, a System is any entity which collects, processes, infers, transmits or stores personal data. Examples of Systems include applications, databases, data warehouses, third party vendors, government agencies or business departments.
+
+  - term: Third Party Recipients
+    description: A Third Party Recipient is any entity, whether an organization or person that receives personal data in the course of processing aside from the Controller. A Third Party Recipient might be a Government Agency such as Tax or Revenue Services or a credit reporting bureau.
