@@ -1,0 +1,22 @@
+issue:
+  title: "Issue Title"
+  score: 
+    description: "Any score information, such as priority, severity, magnitude, category."
+  chief_complaint:
+    description: "Summarize the problem as reported by the affected person."
+  participants:
+    description: "Who is involved, such as the discoverer of the issue, affected users, employees, partners, specific people, who to inform about the progress, etc."
+  symptoms:
+    description: "What is going wrong on the surface, such as the users' perspectives, or triggers, or alerts, etc."
+  fractures:
+    description: "What's broken, such as a failed part, or crashed application, or stuck process, etc."
+  history:
+    description: "Relevant background information, such as prior similar issues, or reports, or references, etc."
+  investigations:
+    description: "What we're doing to research the issue, such as the steps we're taking, or tests we're trying, etc."
+  diagnosis:
+    description: "What is going wrong under the surface, such as any root causes, or cascading causes, etc."
+  treatments:
+    description: "What we're doing to make it better, such as action items, to do lists, mitigations, etc."
+  prognosis:
+    description: "What is the prediction, such as a forecast, potential outcomes, changes in effects, etc."
