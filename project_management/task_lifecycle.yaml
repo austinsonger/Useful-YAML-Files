@@ -1,0 +1,83 @@
+task_life_cycle:
+  description: >
+    Task life cycle is a process that creators (such as software developers) use to build projects (such as software applications). This page describes a task life cycle that we like to use that has six stages: start the task, create the space, develop the work, proof the work, integrate the branch, finish the task.
+
+    Task life cycle aligns with the concepts of [systems development life cycle](https://en.wikipedia.org/wiki/Systems_development_life_cycle) and [software development process](https://wikipedia.org/wiki/Software_development_process). Task life cycle works well with many software development methodologies and frameworks, such as [agile](https://wikipedia.org/wiki/Agile_software_development), [lean](https://wikipedia.org/wiki/Lean_software_development), [kanban](https://wikipedia.org/wiki/Kanban), [scrum](https://wikipedia.org/wiki/Scrum), [spiral](https://wikipedia.org/wiki/Spiral_model), [prototyping](https://wikipedia.org/wiki/Software_prototyping), and more.
+  stages:
+    - name: Stage 1
+      title: Start the task
+      description: Start by choosing your task using your team's preferred way of working.
+      activities:
+        - description: Some teams organize
+          examples: [to-do lists, checklists, story cards, use cases, swim lanes, statement of work (SoW), work breakdown structure (WBS)]
+        - description: Some teams categorize
+          examples: [labels, tags, keywords, icons, status indicators, skill sets, flowcharts, value stream maps, hexagonal architecture]
+        - description: Some teams prioritize
+          examples: [importance, story points, value estimates, planning poker, board grooming, Gantt charts, critical scheduling, resource leveling]
+        - description: Some teams update
+          examples: [status indicators or tags, moving a story card between kanban board columns, progressing a use case from one swim lane to the next]
+        - description: Some teams notify
+          examples: [sending messages to stakeholders, posting progress information on a web page, using alert systems for developers]
+    - name: Stage 2
+      title: Create the space
+      description: Create the space you need in order to do the task.
+      steps:
+        - description: Our team uses git version control. We create the space by using git to create a new git topic branch.
+        - commands:
+            - description: Update your project's main branch
+              steps:
+                - command: git checkout main
+                - command: git pull
+            - description: Checkout a new branch with a suitable topic name and push the branch
+              steps:
+                - command: git checkout -b add-lorem-ipsum
+                - command: git push
+        - description: Some teams involve collaborators at this stage
+          examples: [pair programmers, swarm programmers, quality assurance teammates, relevant user stakeholders]
+        - description: Some teams create a teamwide git alias command
+          link: https://github.com/gitalias/gitalias
+    - name: Stage 3
+      title: Develop the work
+      description: Work as usual. When you're ready, and your code successfully passes all your expected tests, then commit the code.
+      steps:
+        - command: git add --all
+        - command: git commit --message "Add lorem ipsum"
+        - command: git push
+        - description: Push the topic branch at least once per day when all local tests succeed.
+        - description: If your team does task tracking updates, then do these.
+          examples: [adding notes for work in progress, updating task percent complete, checking off pieces in a task checklist]
+    - name: Stage 4
+      title: Proof the work
+      description: When your code is ready for your team to proof (review), then start this stage.
+      steps:
+        - description: Some teams use GitHub features to help with proofing.
+          steps:
+            - Go to GitHub to your topic branch. Create a pull request.
+            - Add reviewers to the pull request. GitHub will notify the reviewers.
+            - If you need the review to be urgent, then also message the reviewers directly.
+            - Allow 24 hours for reviewers to read, respond, etc.
+            - When all the reviewers have weighed in, and you have handled any show-stoppers, and all the reviewers have given their "thumbs up" icon, then the code is ready to merge into the main branch.
+            - If the workflow has automatic review detection, then a successful review will automatically send the code along to the next step. If the workflow doesn't have automatic review detection, then notify the teammate who is responsible for the next step.
+    - name: Stage 5
+      title: Integrate the branch
+      description: The appropriate person begins to integrate your work into the main branch, and looks for areas such as these.
+      steps:
+        - Are there any merge conflicts? If so, resolve these.
+        - Are there any dependency updates? If so, do these.
+        - Are there any test failures? If so, fix these.
+        - Are there any quality issues? If so, address these.
+        - Are there any feature flags? If so, set these.
+        - Are there any telemetry changes? If so, adjust these.
+      outcome: When all goes well, then your work is merged into main, and ready to deliver. If the team's workflow uses notifications, then do the notifications.
+    - name: Stage 6
+      title: Finish the task
+      description: Deliver all the deliverables. This means shipping the code to users, or publishing the pages to a website, or releasing a new application version, etc.
+      steps:
+        - If the team's workflow has continuous delivery, then the code is automatically delivered.
+        - Verify the code is working correctly for real users.
+        - Verify that system processes are working correctly, such as logging, telemetry reporting, application performance monitoring, synthetic testing, high availability scaling, disaster recovery backups.
+        - If any issues turn up, then create follow-up tasks to triage them.
+        - If your team does retrospectives, then add your notes to the retrospective area.
+        - Notify stakeholders that the code is delivered.
+        - Mark the task as finished in your team's project management software.
+      conclusion: Congratulations, your task life cycle is complete!
