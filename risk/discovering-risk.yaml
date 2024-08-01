@@ -1,0 +1,121 @@
+risk_interview:
+  objective: "Effectively draw upon expert knowledge to discover plausible risk scenarios that require mitigation by our larger security organization."
+  key_result: "Written analysis and the production of scenarios that guide mitigation efforts."
+
+getting_started:
+  tips:
+    - "👂 Listen: The more you're talking, the less you're listening."
+    - "🔨 Break the rules: This document helps move a discussion along, but great interviews go off script and dive in."
+    - "📋 Capture notes: Balance conversation and note-taking. Work with a partner if possible."
+
+agenda:
+  - "Introduce yourself."
+  - "Get to know the interviewee."
+  - "Ask them open-ended questions."
+  - "Take notes."
+  - "Organize the notes into a deliverable."
+
+steps:
+  - step: "👋 Introduce yourself"
+    details: "You’re the stranger! That’s OK. This means you have free reign to ask naive questions and ask for clarification. That’s why you’re valuable. Make sure the person knows who you are and why you’re qualified. The interviewees may think you’re sent to judge their performance. This shouldn’t be the case. Clarify this upfront."
+  
+  - step: "😎 Get to know the interviewee"
+    questions:
+      - "How would you describe your role?"
+      - "What are you hoping to work on this week?"
+      - "What is a typical task you’re assigned?"
+      - "What are your regularly occurring meetings?"
+      - "What projects are you cheering on that make your life easier?"
+      - "Who are you frequently collaborating with?"
+      - "Can you describe a process from task to close?"
+
+  - step: "❓ Ask the interviewee open-ended questions"
+    details: "Conversations are never scripted. Good interviews flow naturally towards interesting subjects. A good interviewer should be prepared to explore the knowledge of the interviewee with a toolbox of questions and methods."
+    models:
+      impacts:
+        description: "Describe any concept of value, either monetary or qualitative topics like 'safety' or 'knowledge'."
+        questions:
+          - "What sort of data is very exclusive to our company?"
+          - "What could you go delete that would get you fired?"
+          - "What do we own that a competitor could monetize?"
+          - "What do we have that is worth backing up?"
+          - "Are there any 'switches' you’d be afraid of flipping?"
+          - "Who has the A/C privileged conversations?"
+          - "How would you cause a severe outage?"
+          - "Are there headlines you’re worried about?"
+      threats:
+        description: "Describe the type of force, human or otherwise, that would act or behave in a way that would result in an impact."
+        questions:
+          - "Are there outside vendors with access to this?"
+          - "What would someone do if they knew they’d be fired?"
+          - "Who would want to see a headline?"
+          - "Are there groups of people that don’t like this?"
+          - "What do adversaries need to be capable of?"
+          - "Who has succeeded before?"
+      vulnerabilities:
+        description: "Describe circumstances or configurations that may attract a threat or exacerbate an impact."
+        questions:
+          - "Are there bugs we drag our feet on?"
+          - "What kind of 'biggies' have been found in the past?"
+          - "Do people ever complain that something isn’t quite locked down?"
+          - "What sorts of bugs get a huge payout?"
+          - "Are there any surprisingly old dependencies?"
+          - "What bugs take the longest to see a fix?"
+      fears:
+        description: "Bring any underlying worries to the surface."
+        questions:
+          - "What do we try to defend against?"
+          - "What keeps you up at night?"
+          - "Have we had any 'near misses'?"
+      conditional_scenarios:
+        description: "Walk the interviewee one layer deep with 'what if' situations."
+        questions:
+          - "What would an adversary immediately discover on your laptop?"
+          - "What would an adversary immediately discover on the network?"
+          - "What would an adversary immediately discover on our servers?"
+          - "What would an adversary immediately discover in our source code?"
+          - "What would an adversary immediately discover in our offices?"
+          - "What would an adversary immediately discover about our supply chain?"
+      vip_employees:
+        description: "Discover employees that may have overloaded capabilities if compromised."
+        questions:
+          - "Who would you describe as 'the guru' here?"
+          - "Who has access to everything?"
+          - "Who influences decisions?"
+          - "Who do you hope never goes 'rogue'?"
+          - "What do we need to turn off immediately when someone is fired?"
+      best_practices:
+        description: "Change perspectives and see if assumptions are being made about risks being low."
+        questions:
+          - "Are there things that aren’t encrypted, but should be?"
+          - "Have you seen things that don’t authenticate like everything else?"
+          - "Are there roles or groups that have too much access?"
+          - "Do you expect to not be alerted about certain things?"
+          - "Have things gone on without a retrospective?"
+          - "Do other companies mitigate things better than us?"
+      in_the_wild:
+        description: "This follows the theory that no incident should happen more than once."
+        questions:
+          - "Are there incidents you’ve seen that you worry about?"
+          - "Have any incidents happened here?"
+
+  - step: "✍️ Take Notes"
+    details: "Notes are very personal and open-ended. This part does not need to be prescribed. If useful, I make the following collaborative spreadsheet."
+    note_structure:
+      columns: ["Scenarios", "Vulnerabilities", "Impacts", "Threat Actors", "Follow Up Questions"]
+
+  - step: "📖 Preparing Deliverables"
+    details: "Right now you’re the only one who got anything from these interviews. You’ll need to prepare some written analysis for others to make use of it."
+    deliverables:
+      scenarios:
+        description: "A scenario is a concrete way to articulate a risk. Scenarios are undesirable future events."
+        examples:
+          - "An outage in `prod002` violates customer SLA."
+          - "The RCE in our mobile app API is used to gain persistence on a server."
+          - "An insider on support tooling exfiltrates customer data to the media."
+      general_observations:
+        description: "Interviews will produce useful themes. These are also useful to capture and reveal themselves unpredictably."
+        examples:
+          - "Organizations that produce more risk than others."
+          - "Mitigations that are suspected to be ineffective."
+          - "Engineering practices that create more churn than necessary."
