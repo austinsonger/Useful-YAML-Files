@@ -1,0 +1,23 @@
+
+ofi:
+  title: "Opportunities For Improvement"
+  description: |
+    Opportunities For Improvement (OFI) impart recommendations based on findings of response team members and asset owners 
+    during each phase of the response. These recommendations are provided to help reduce attack surfaces, enhance security posture, 
+    improve operational readiness, and boost the effectiveness of future response.
+  phases:
+    preparation:
+      title: "Preparation"
+      description: "There are no current preparation OFI."
+    identification:
+      title: "Identification"
+      description: "There are no current identification OFI."
+    containment:
+      title: "Containment"
+      description: "There are no current containment OFI."
+    eradication:
+      title: "Eradication"
+      description: "There are no current eradication OFI."
+    recovery:
+      title: "Recovery"
+      description: "There are no current recovery OFI."

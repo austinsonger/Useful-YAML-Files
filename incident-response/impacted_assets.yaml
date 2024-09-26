@@ -1,0 +1,19 @@
+
+impacted_assets:
+  title: "Impacted Resources & Assets"
+  general_resources:
+    description: "The following lists general resources that are believed to have been negatively impacted:"
+    items:
+      - "Customer Data"
+      - "Employee Data"
+      - "Financial Data"
+      - "Legal Data"
+      - "Intellectual Property"
+  specific_critical_assets:
+    description: "The following lists specific critical assets that are believed to have been negatively impacted:"
+    items:
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""

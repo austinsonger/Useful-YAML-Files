@@ -1,0 +1,33 @@
+
+coa:
+  title: "Courses Of Action"
+  description: |
+    Courses Of Action (COA) derived from the CKC represent the countermeasures, containment & eradication, 
+    and recovery actions that are being deployed by response team members and asset owners to target 
+    and engage adversaries.
+  inventory:
+    title: "Inventory"
+    description: "There are no current COA to inventory assets associated with the vulnerability / exploit / compromise / adversaries."
+  containment_eradication:
+    title: "Containment & Eradication"
+    detect:
+      title: "Detect"
+      description: "There are no current COA to detect the vulnerability / exploit / compromise / adversaries."
+    deny:
+      title: "Deny"
+      description: "There are no current COA to deny the vulnerability / exploit / compromise / adversaries."
+    disrupt:
+      title: "Disrupt"
+      description: "There are no current COA to disrupt the vulnerability / exploit / compromise / adversaries."
+    degrade:
+      title: "Degrade"
+      description: "There are no current COA to degrade the vulnerability / exploit / compromise / adversaries."
+    deceive:
+      title: "Deceive"
+      description: "There are no current COA to deceive the vulnerability / exploit / compromise / adversaries."
+    destroy:
+      title: "Destroy"
+      description: "There are no current COA to destroy the vulnerability / exploit / adversaries."
+  recovery:
+    title: "Recovery"
+    description: "There are no current COA to recover compromised assets."

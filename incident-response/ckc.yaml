@@ -1,0 +1,30 @@
+
+ckc:
+  title: "Cyber Kill Chain"
+  description: |
+    Cyber Kill Chain (CKC) is a systematic analysis process used by response team members and asset owners 
+    to identify and communicate the stages of an attack. The patterns, behaviors, tactics, techniques, and 
+    procedures (TTP) used by adversaries are described using this analysis to subsequently develop COA designed 
+    to target and engage adversaries.
+  stages:
+    reconnaissance:
+      title: "Reconnaissance"
+      description: "Reconnaissance TTP are not currently known / do not exist."
+    weaponization:
+      title: "Weaponization"
+      description: "Weaponization and payload TTP are not currently known / do not exist."
+    delivery:
+      title: "Delivery"
+      description: "Delivery TTP are not currently known / do not exist."
+    exploitation:
+      title: "Exploitation"
+      description: "Exploitation TTP are not currently known / do not exist."
+    installation:
+      title: "Installation"
+      description: "Installation TTP for creating maintained persistence are not currently known / do not exist."
+    command_and_control:
+      title: "Command and Control"
+      description: "Command and Control TTP for maintaining persistence are not currently known / do not exist."
+    actions_on_objectives:
+      title: "Actions on Objectives"
+      description: "Actions on Objectives TTP for achieving goals are not currently known / do not exist."
