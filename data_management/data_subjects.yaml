@@ -8,8 +8,6 @@ data_subjects:
     rights: []
     strategy: NONE
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: citizen_voter
     name: Citizen Voter
     description: An individual registered to vote with a state or authority.
@@ -25,8 +23,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: commuter
     name: Commuter
     description: An individual that is traveling or transiting in the context of location tracking.
@@ -42,8 +38,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: consultant
     name: Consultant
     description: An individual employed in a consultative/temporary capacity by the organization.
@@ -59,8 +53,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: customer
     name: Customer
     description: An individual or other organization that purchases goods or services from the organization.
@@ -76,8 +68,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: employee
     name: Employee
     description: An individual employed by the organization.
@@ -93,8 +83,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: job_applicant
     name: Job Applicant
     description: An individual applying for employment to the organization.
@@ -110,8 +98,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: next_of_kin
     name: Next of Kin
     description: A relative of any other individual subject where such a relationship is known.
@@ -127,8 +113,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: passenger
     name: Passenger
     description: An individual traveling on some means of provided transport.
@@ -144,8 +128,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: patient
     name: Patient
     description: An individual identified for the purposes of any medical care.
@@ -161,8 +143,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: prospect
     name: Prospect
     description: An individual or organization to whom an organization is selling goods or services.
@@ -178,8 +158,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: shareholder
     name: Shareholder
     description: An individual or organization that holds equity in the organization.
@@ -195,8 +173,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: supplier_vendor
     name: Supplier Vendor
     description: An individual or organization that provides services or goods to the organization.
@@ -212,8 +188,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: trainee
     name: Trainee
     description: An individual undergoing training by the organization.
@@ -229,8 +203,6 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
-
   - datasubject_key: visitor
     name: Visitor
     description: An individual visiting a location.
@@ -246,4 +218,3 @@ data_subjects:
       - Object to Automated Processing
     strategy: ALL
     automated_decisions_or_profiling: false
-
