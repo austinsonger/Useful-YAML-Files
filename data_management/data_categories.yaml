@@ -13,8 +13,6 @@ data_categories:
         name: Operations
         description: Data used for system operations.
         parent_key: system
-
-
   - datacategory_key: user
     name: User
     description: Data related to the user of the system.
