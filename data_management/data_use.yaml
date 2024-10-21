@@ -24,12 +24,10 @@ data_uses:
         name: System Performance Reporting
         description: Provides analytics for reporting on system performance.
         parent_key: analytics.reporting.system
-
   - key: collect
     name: Collect
     description: Collects or stores data in order to use it for another purpose which has not yet been expressly defined.
     parent_key: null
-
   - key: employment
     name: Employment
     description: Processes data for the purpose of recruitment or employment and human resources (HR) related activities.
@@ -39,7 +37,6 @@ data_uses:
         name: Recruitment
         description: Processes data of prospective employees for the purpose of recruitment.
         parent_key: employment
-
   - key: essential
     name: Essential
     description: Operates the service or product, including legal obligations, support and basic system operations.
@@ -100,12 +97,10 @@ data_uses:
             name: System Upgrades
             description: Provides timely system upgrade information options.
             parent_key: essential.service
-
   - key: finance
     name: Finance
     description: Enables finance and accounting activities such as audits and tax reporting.
     parent_key: null
-
   - key: functional
     name: Functional
     description: Used for specific, necessary, and legitimate purposes.
@@ -124,7 +119,6 @@ data_uses:
             name: Service Improvement
             description: Improves the specific product, service, application or system.
             parent_key: functional.service
-
   - key: marketing
     name: Marketing
     description: Enables marketing, promotion, advertising and sales activities for the product, service, application or system.
@@ -185,12 +179,10 @@ data_uses:
           - key: marketing.communications.sms
             name: SMS Communications
             description: Sends SMS marketing communications.
-
   - key: operations
     name: Operations
     description: Supports business processes necessary to the organization's operation.
     parent_key: null
-
   - key: personalize
     name: Personalize
     description: Personalizes the product, service, application or system.
@@ -208,12 +200,10 @@ data_uses:
         name: System Personalization
         description: Personalizes the system.
         parent_key: personalize
-
   - key: sales
     name: Sales
     description: Supports sales activities such as communications and outreach.
     parent_key: null
-
   - key: third_party_sharing
     name: Third-Party Sharing
     description: Transfers data to third parties outside of the system or service's scope.
@@ -223,7 +213,6 @@ data_uses:
         name: Legal Obligation Sharing
         description: Shares data for legal obligations, including contracts, applicable laws or regulations.
         parent_key: third_party_sharing
-
   - key: train_ai_system
     name: Train AI System
     description: Trains an AI system or data model for machine learning.
