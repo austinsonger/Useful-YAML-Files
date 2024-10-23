@@ -1,0 +1,779 @@
+## Version Number:
+## Date Updated: 
+#############################
+## Date Created: 
+## Environment: Federal
+#############################
+Diagram:
+  DefinitionFiles:
+    - Type: URL
+      Url: https://raw.githubusercontent.com/awslabs/diagram-as-code/main/definitions/definition-for-aws-icons-light.yaml
+
+  Resources:
+    ######################## AWS Account and Region ##########################
+    # PURPOSE: AWS Account hosted in us-east-1 region with three VPCs 
+    # (Production, EKS, and CMD Ops), and an additional EKS Cluster Pod Services 
+    # not wrapped in a VPC.
+    ##########################################################################
+    Canvas:
+      Type: AWS::Diagram::Canvas
+      Children:
+        - AWS_Account
+
+    AWS_Account:
+      Type: AWS::Diagram::Cloud
+      Preset: AWSCloudNoLogo
+      Title: "AWS Account (us-east-1)"
+      Icon: Account
+      Children:
+        - AWS_Region
+
+    AWS_Region:
+      Type: AWS::Region
+      Title: "us-east-1"
+      Label: "Region: us-east-1"
+      Icon: Region
+      Children:
+        - ProductionVPC
+        - EKSVPC
+        - CMDOpsVPC
+        - EKS_Cluster_Pod_Services
+
+    ########################### EKS Cluster – Pod Services ####################
+    # PURPOSE: Defines the Pod Services running in the EKS Cluster, not 
+    # enclosed in a specific VPC boundary.
+    ##########################################################################
+    EKS_Cluster_Pod_Services:
+      Type: AWS::Diagram::HorizontalStack
+      Title: "EKS Cluster – Pod Services"
+      Preset: AWS::EKS::Cluster
+      Children:
+        - Envoy_Proxy
+        - ArgoCD_Pod
+        - Calico
+        - Gemini
+        - LB_Controller
+        - Reloader
+        - OWASP_ZAP
+        - New_Relic_Pod
+        - SentinelOne_Pod
+        - FluentBit
+        - Meltano
+        - Looker
+    Envoy_Proxy:
+      Type: Diagram::Icon
+      IconType: Envoy
+      Title: "Envoy Proxy\nDIT-9"
+      # PURPOSE: Envoy Proxy is used as a high-performance, open-source edge 
+      # and service proxy designed for cloud-native applications.
+      #====================================================================
+    ArgoCD_Pod:
+      Type: Diagram::Icon
+      IconType: ArgoCD
+      Title: "ArgoCD"
+      # PURPOSE: ArgoCD is a declarative, GitOps continuous delivery tool 
+      # for Kubernetes used to manage and automate application deployments.
+      #====================================================================
+    Calico:
+      Type: Diagram::Icon
+      IconType: Calico
+      Title: "Calico"
+      # PURPOSE: Calico provides networking and network security solutions 
+      # for Kubernetes clusters, enhancing security and traffic control.
+      #====================================================================
+    Gemini:
+      Type: Diagram::Icon
+      IconType: Gemini
+      Title: "Gemini"
+      # PURPOSE: Gemini provides Kubernetes backup and restore services, 
+      # ensuring data persistence and disaster recovery capabilities.
+      #====================================================================
+    LB_Controller:
+      Type: Diagram::Icon
+      IconType: LBController
+      Title: "LB Controller"
+      # PURPOSE: Load Balancer Controller manages load balancing services 
+      # for a Kubernetes cluster.
+      #====================================================================
+    Reloader:
+      Type: Diagram::Icon
+      IconType: Reloader
+      Title: "Reloader"
+      # PURPOSE: Reloader automatically reloads Kubernetes pods when changes 
+      # are detected in ConfigMaps or Secrets, ensuring smooth updates.
+      #====================================================================
+    OWASP_ZAP:
+      Type: Diagram::Icon
+      IconType: OWASPZAP
+      Title: "OWASP ZAP"
+      # PURPOSE: OWASP ZAP (Zed Attack Proxy) is a security tool used for 
+      # finding vulnerabilities in web applications, particularly during 
+      # development.
+      #====================================================================
+    New_Relic_Pod:
+      Type: Diagram::Icon
+      IconType: NewRelic
+      Title: "New Relic"
+      # PURPOSE: New Relic is an observability platform that provides 
+      # real-time insights into the performance and health of applications 
+      # and infrastructure.
+      #====================================================================
+    SentinelOne_Pod:
+      Type: Diagram::Icon
+      IconType: SentinelOne
+      Title: "SentinelOne"
+      # PURPOSE: SentinelOne provides endpoint protection for Kubernetes 
+      # environments, detecting and responding to security threats in real-time.
+      #====================================================================
+    FluentBit:
+      Type: Diagram::Icon
+      IconType: FluentBit
+      Title: "FluentBit"
+      # PURPOSE: Fluent Bit is a lightweight log processor and forwarder 
+      # used to collect and send logs from Kubernetes pods to centralized 
+      # log storage.
+      #====================================================================
+    Meltano:
+      Type: Diagram::Icon
+      IconType: Meltano
+      Title: "Meltano"
+      # PURPOSE: Meltano is an open-source platform for building, running, 
+      # and managing data pipelines, providing ETL (Extract, Transform, 
+      # Load) capabilities.
+      #====================================================================
+    Looker:
+      Type: Diagram::Icon
+      IconType: Looker
+      Title: "Looker"
+      # PURPOSE: Looker is a business intelligence and data analytics tool 
+      # used to visualize and explore data in real time.
+      #====================================================================
+
+    ############################ Production VPC ############################
+    # PURPOSE: This section defines the Production VPC and its subnets spread
+    # across three availability zones (A, B, C) with specific resources like 
+    # Palo Alto, Transit Gateway, and RDS.
+    ####################################################################### 
+    ProductionVPC:
+      Type: AWS::EC2::VPC
+      Title: "Production VPC"
+      Direction: vertical
+      Children:
+        - Production_AZ_A
+        - Production_AZ_B
+        - Production_AZ_C
+    ################### Availability Zone A (Production VPC) ###################
+    Production_AZ_A:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone A"
+      Children:
+        - Public_Subnet_A_1
+        - Private_Subnet_A_2
+        - Private_Subnet_A_3
+    # Public Subnet in AZ A with Palo Alto
+    Public_Subnet_A:
+      Type: AWS::EC2::Subnet
+      Preset: PublicSubnet
+      Title: "Public Subnet A (10.72.0.0/26)"
+      Children:
+        - Palo_Alto_A_Public
+    Palo_Alto_A_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ A 
+      # for Production VPC.
+      #====================================================================
+      
+    # Private Subnet 1 in AZ A with Palo Alto and Transit Gateway
+    Private_Subnet_A_1:
+      Type: AWS::EC2::Subnet
+      Preset: SubnetPrivate
+      Title: "Private Subnet A1 (10.72.1.0/26)"
+      Children:
+        - Palo_Alto_A_Private
+        - Transit_Gateway_A
+    Palo_Alto_A_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-3\nDIT-4\nDIT-5"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ A 
+      # for Production VPC.
+      #====================================================================
+    Transit_Gateway_A:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway used for VPC interconnection in AZ A.
+      #====================================================================
+    # Private Subnet 2 in AZ A with RDS and ElastiCache
+    Private_Subnet_A_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet A2 (10.72.3.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - RDS_Primary_A
+        - RDS_Secondary_A
+        - ElastiCache_A
+    RDS_Primary_A:
+      Type: AWS::RDS::DBInstance
+      Title: "AWS RDS Primary"
+      Label: "Amazon RDS (Primary)\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: Primary RDS instance in private subnet of AZ A 
+      # for Production VPC.
+      #====================================================================
+    RDS_Secondary_A:
+      Type: AWS::RDS::DBInstance
+      Title: "AWS RDS Secondary"
+      Label: "Amazon RDS (Secondary)\nDIT-17\nDAR-1"
+      # PURPOSE: Secondary RDS instance in private subnet of AZ A 
+      # for Production VPC.
+      #====================================================================
+    ElastiCache_A:
+      Type: AWS::ElastiCache::CacheCluster
+      Title: "ElastiCache"
+      Label: "ElastiCache\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: ElastiCache instance in private subnet of AZ A 
+      # for Production VPC.
+      #====================================================================
+      
+    ################### Availability Zone B (Production VPC) ###################
+    Production_AZ_B:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone B"
+      Label: "AZ B"
+      Icon: AZ
+      Children:
+        - Public_Subnet_B
+        - Private_Subnet_B_1
+        - Private_Subnet_B_2
+    # Public Subnet in AZ B with Palo Alto
+    Public_Subnet_B:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet B (10.72.4.0/26)"
+      Preset: SubnetPublic
+      Children:
+        - Palo_Alto_B_Public
+    Palo_Alto_B_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ B 
+      # for Production VPC.
+      #====================================================================
+      
+    # Private Subnet 1 in AZ B with Palo Alto and Transit Gateway
+    Private_Subnet_B_1:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B2 (10.72.7.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Palo_Alto_B_Private
+        - Transit_Gateway_B
+    Palo_Alto_B_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Private\nDIT-3\nDIT-4\nDIT-5"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ B 
+      # for Production VPC.
+      #====================================================================
+    Transit_Gateway_B:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway used for VPC interconnection in AZ B.
+      #====================================================================
+    # Private Subnet 2 in AZ B with RDS and ElastiCache
+    Private_Subnet_B_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B2 (10.72.7.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - RDS_Primary_B
+        - RDS_Secondary_B
+        - ElastiCache_B
+    RDS_Primary_B:
+      Type: AWS::RDS::DBInstance
+      Title: "Amazon RDS (Primary)\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: Primary RDS instance in private subnet of AZ B 
+      # for Production VPC.
+      #====================================================================
+    RDS_Secondary_B:
+      Type: AWS::RDS::DBInstance
+      Title: "Amazon RDS (Secondary)\nDIT-17\nDAR-1"
+      # PURPOSE: Secondary RDS instance in private subnet of AZ B 
+      # for Production VPC.
+      #====================================================================
+    ElastiCache_B:
+      Type: AWS::ElastiCache::CacheCluster
+      Title: "ElastiCache\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: ElastiCache instance in private subnet of AZ B 
+      # for Production VPC.
+      #====================================================================
+      
+    ################### Availability Zone C (Production VPC) ###################
+    Production_AZ_C:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone C"
+      Label: "AZ C"
+      Icon: AZ
+      Children:
+        - Public_Subnet_C
+        - Private_Subnet_C_1
+        - Private_Subnet_C_2
+
+    # Public Subnet in AZ C with Palo Alto
+    Public_Subnet_C:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet C (10.72.8.0/26)"
+      Preset: SubnetPublic
+      Children:
+        - Palo_Alto_C_Public
+    Palo_Alto_C_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Public\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ C 
+      # for Production VPC.
+      #====================================================================
+      
+    # Private Subnet 1 in AZ C with Palo Alto and Transit Gateway
+    Private_Subnet_C_1:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet C1 (10.72.9.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Palo_Alto_C_Private
+        - Transit_Gateway_C
+    Palo_Alto_C_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-3\nDIT-4\nDIT-5"
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ C 
+      # for Production VPC.
+      #====================================================================
+    Transit_Gateway_C:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway used for VPC interconnection in AZ C.
+      #====================================================================
+      
+    # Private Subnet 2 in AZ C with RDS and ElastiCache
+    Private_Subnet_C_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet C2 (10.72.11.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - RDS_Primary_C
+        - RDS_Secondary_C
+        - ElastiCache_C
+    RDS_Primary_C:
+      Type: AWS::RDS::DBInstance
+      Title: "Amazon RDS (Primary)\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: Primary RDS instance in private subnet of AZ C 
+      # for Production VPC.
+      #====================================================================
+    RDS_Secondary_C:
+      Type: AWS::RDS::DBInstance
+      Title: "Amazon RDS (Secondary)\nDIT-17\nDAR-1"
+      # PURPOSE: Secondary RDS instance in private subnet of AZ C 
+      # for Production VPC.
+      #====================================================================
+    ElastiCache_C:
+      Type: AWS::ElastiCache::CacheCluster
+      Title: "ElastiCache\nDIT-16\nDIT-17\nDAR-1"
+      # PURPOSE: ElastiCache instance in private subnet of AZ C 
+      # for Production VPC.
+      #====================================================================
+
+
+    ############################# EKS VPC #################################
+    # PURPOSE: This section defines the EKS VPC and its subnets spread
+    # across three availability zones (A, B, C) with EKS-related resources 
+    # like Application Load Balancer, Transit Gateway, and EKS Nodes.
+    #######################################################################  
+    EKSVPC:
+      Type: AWS::EC2::VPC
+      Title: "EKS VPC"
+      Label: "EKS VPC"
+      Icon: VPC
+      Direction: vertical
+      Children:
+        - EKS_AZ_A
+        - EKS_AZ_B
+        - EKS_AZ_C
+        
+    ################### Availability Zone A (EKS VPC) ######################
+    EKS_AZ_A:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone A"
+      Label: "AZ A"
+      Icon: AZ
+      Children:
+        - Public_Subnet_EKS_A
+        - Private_Subnet_EKS_A
+    # Public Subnet in AZ A with Application Load Balancer
+    Public_Subnet_EKS_A:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet A (10.73.0.0/24)"
+      Preset: SubnetPublic
+      Children:
+        - Application_Load_Balancer_A
+    Application_Load_Balancer_A:
+      Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+      Title: "Application Load Balancer\nDIT-8"
+      # PURPOSE: Application Load Balancer in the public subnet of AZ A 
+      # for EKS VPC, distributing traffic across EKS nodes.
+      #====================================================================
+      
+    # Private Subnet in AZ A with Transit Gateway and EKS Nodes
+    Private_Subnet_EKS_A:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet A (10.73.8.0/21)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_EKS_A
+        - EKS_Cluster_Nodes_A
+    Transit_Gateway_EKS_A:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ A 
+      # for EKS VPC, enabling VPC interconnection.
+      #====================================================================
+      
+    # EKS Cluster Nodes (WebApp, Worker, WebSocket Service)
+    EKS_Cluster_Nodes_A:
+      Type: AWS::EKS::NodeGroup
+      Title: "EKS Cluster - Nodes"
+      Icon: EKSNodeGroup
+      Children:
+        - WebApp_Node_A
+        - Worker_Node_A
+        - WebSocket_Service_Node_A
+    WebApp_Node_A:
+      Type: AWS::EKS::Node
+      Title: "WebApp Node (n+1)"
+      # PURPOSE: WebApp Node for the EKS Cluster in AZ A.
+      #====================================================================
+    Worker_Node_A:
+      Type: AWS::EKS::Node
+      Title: "Worker Node (n+1)"
+      # PURPOSE: Worker Node for the EKS Cluster in AZ A.
+      #====================================================================
+    WebSocket_Service_Node_A:
+      Type: AWS::EKS::Node
+      Title: "WebSocket Service Node (n+1)"
+      # PURPOSE: WebSocket Service Node for the EKS Cluster in AZ A.
+      #====================================================================
+      
+    ################### Availability Zone B (EKS VPC) ######################
+    EKS_AZ_B:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone B"
+      Label: "AZ B"
+      Icon: AZ
+      Children:
+        - Public_Subnet_EKS_B
+        - Private_Subnet_EKS_B
+    # Public Subnet in AZ B with Application Load Balancer
+    Public_Subnet_EKS_B:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B (10.73.24.0/21)"
+      Preset: SubnetPublic
+      Children:
+        - Application_Load_Balancer_B
+    Application_Load_Balancer_B:
+      Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+      Title: "Application Load Balancer\nDIT-8"
+      # PURPOSE: Application Load Balancer in the public subnet of AZ B 
+      # for EKS VPC, distributing traffic across EKS nodes.
+      #====================================================================
+      
+    # Private Subnet in AZ B with Transit Gateway and EKS Nodes
+    Private_Subnet_EKS_B:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B (10.73.24.0/21)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_EKS_B
+        - EKS_Cluster_Nodes_B
+    Transit_Gateway_EKS_B:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ B 
+      # for EKS VPC, enabling VPC interconnection.
+      #====================================================================
+      
+    # EKS Cluster Nodes (WebApp, Worker, WebSocket Service)
+    EKS_Cluster_Nodes_B:
+      Type: AWS::EKS::NodeGroup
+      Title: "EKS Cluster - Nodes"
+      Icon: EKSNodeGroup
+      Children:
+        - WebApp_Node_B
+        - Worker_Node_B
+        - WebSocket_Service_Node_B
+    WebApp_Node_B:
+      Type: AWS::EKS::Node
+      Title: "WebApp Node (n+1)"
+      # PURPOSE: WebApp Node for the EKS Cluster in AZ B.
+      #====================================================================
+    Worker_Node_B:
+      Type: AWS::EKS::Node
+      Title: "Worker Node (n+1)"
+      # PURPOSE: Worker Node for the EKS Cluster in AZ B.
+      #====================================================================
+    WebSocket_Service_Node_B:
+      Type: AWS::EKS::Node
+      Title: "WebSocket Service Node (n+1)"
+      # PURPOSE: WebSocket Service Node for the EKS Cluster in AZ B.
+      #====================================================================
+      
+    ################### Availability Zone C (EKS VPC) ######################
+    EKS_AZ_C:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone C"
+      Label: "AZ C"
+      Icon: AZ
+      Children:
+        - Public_Subnet_EKS_C
+        - Private_Subnet_EKS_C
+    # Public Subnet in AZ C with Application Load Balancer
+    Public_Subnet_EKS_C:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet C (10.73.32.0/24)"
+      Preset: SubnetPublic
+      Children:
+        - Application_Load_Balancer_C
+    Application_Load_Balancer_C:
+      Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+      Title: "Application Load Balancer\nDIT-8"
+      # PURPOSE: Application Load Balancer in the public subnet of AZ C 
+      # for EKS VPC, distributing traffic across EKS nodes.
+      #====================================================================
+      
+    # Private Subnet in AZ C with Transit Gateway and EKS Nodes
+    Private_Subnet_EKS_C:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet C (10.73.40.0/21)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_EKS_C
+        - EKS_Cluster_Nodes_C
+    Transit_Gateway_EKS_C:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ C 
+      # for EKS VPC, enabling VPC interconnection.
+      #====================================================================
+      
+    # EKS Cluster Nodes (WebApp, Worker, WebSocket Service)
+    EKS_Cluster_Nodes_C:
+      Type: AWS::EKS::NodeGroup
+      Title: "EKS Cluster - Nodes"
+      Icon: EKSNodeGroup
+      Children:
+        - WebApp_Node_C
+        - Worker_Node_C
+        - WebSocket_Service_Node_C
+    WebApp_Node_C:
+      Type: AWS::EKS::Node
+      Title: "WebApp Node (n+1)"
+      # PURPOSE: WebApp Node for the EKS Cluster in AZ C.
+      #====================================================================
+    Worker_Node_C:
+      Type: AWS::EKS::Node
+      Title: "Worker Node (n+1)"
+      # PURPOSE: Worker Node for the EKS Cluster in AZ C.
+      #====================================================================
+    WebSocket_Service_Node_C:
+      Type: AWS::EKS::Node
+      Title: "WebSocket Service Node (n+1)"
+      # PURPOSE: WebSocket Service Node for the EKS Cluster in AZ C.
+      #====================================================================
+
+
+    ########################### CMD Ops VPC ###############################
+    # PURPOSE: This section defines the CMD Ops VPC and its subnets spread
+    # across three availability zones (A, B, C) with Palo Alto firewalls 
+    # and Transit Gateway Attachments.
+    #######################################################################
+    CMDOpsVPC:
+      Type: AWS::EC2::VPC
+      Title: "CMD Ops VPC"
+      Icon: VPC
+      Direction: vertical
+      Children:
+        - CMDOps_AZ_A
+        - CMDOps_AZ_B
+        - CMDOps_AZ_C
+
+    ################### Availability Zone A (CMD Ops VPC) ##################
+    CMDOps_AZ_A:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone A"
+      Label: "AZ A"
+      Icon: AZ A
+      Children:
+        - Public_Subnet_CMD_A
+        - Private_Subnet_CMD_A_1
+        - Private_Subnet_CMD_A_2
+
+    # Public Subnet in AZ A with Palo Alto
+    Public_Subnet_CMD_A:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet A (10.64.0.0/26)"
+      Preset: SubnetPublic
+      Children:
+        - Palo_Alto_CMD_A_Public
+
+    Palo_Alto_CMD_A_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Public\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ A 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 1 in AZ A with Palo Alto
+    Private_Subnet_CMD_A_1:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet A1 (10.64.1.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Palo_Alto_CMD_A_Private
+
+    Palo_Alto_CMD_A_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Private\nDIT-3\nDIT-4\nDIT-5"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ A 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 2 in AZ A with Transit Gateway
+    Private_Subnet_CMD_A_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet A2 (10.64.7.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_CMD_A
+
+    Transit_Gateway_CMD_A:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ A 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    ################### Availability Zone B (CMD Ops VPC) ##################
+    CMDOps_AZ_B:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone B"
+      Label: "AZ B"
+      Icon: AZ
+      Children:
+        - Public_Subnet_CMD_B
+        - Private_Subnet_CMD_B_1
+        - Private_Subnet_CMD_B_2
+
+    # Public Subnet in AZ B with Palo Alto
+    Public_Subnet_CMD_B:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet B (10.64.2.0/26)"
+      Preset: SubnetPublic
+      Children:
+        - Palo_Alto_CMD_B_Public
+
+    Palo_Alto_CMD_B_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Public\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ B 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 1 in AZ B with Palo Alto
+    Private_Subnet_CMD_B_1:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B1 (10.64.3.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Palo_Alto_CMD_B_Private
+
+    Palo_Alto_CMD_B_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto Private\nDIT-3\nDIT-4\nDIT-5"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ B 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 2 in AZ B with Transit Gateway
+    Private_Subnet_CMD_B_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet B2 (10.64.9.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_CMD_B
+
+    Transit_Gateway_CMD_B:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ B 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    ################### Availability Zone C (CMD Ops VPC) ##################
+    CMDOps_AZ_C:
+      Type: AWS::EC2::AvailabilityZone
+      Title: "Availability Zone C"
+      Label: "AZ C"
+      Icon: AZ
+      Children:
+        - Public_Subnet_CMD_C
+        - Private_Subnet_CMD_C_1
+        - Private_Subnet_CMD_C_2
+
+    # Public Subnet in AZ C with Palo Alto
+    Public_Subnet_CMD_C:
+      Type: AWS::EC2::Subnet
+      Title: "Public Subnet C (10.64.4.0/26)"
+      Preset: SubnetPublic
+      Children:
+        - Palo_Alto_CMD_C_Public
+
+    Palo_Alto_CMD_C_Public:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-2\nDIT-6"
+      Icon: PaloAlto
+      # PURPOSE: Palo Alto firewall instance in the public subnet of AZ C 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 1 in AZ C with Palo Alto
+    Private_Subnet_CMD_C_1:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet C1 (10.64.5.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Palo_Alto_CMD_C_Private
+
+    Palo_Alto_CMD_C_Private:
+      Type: AWS::EC2::Instance
+      Title: "Palo Alto\nDIT-3\nDIT-4\nDIT-5"
+      # PURPOSE: Palo Alto firewall instance in the private subnet of AZ C 
+      # for CMD Ops VPC.
+      #====================================================================
+
+    # Private Subnet 2 in AZ C with Transit Gateway
+    Private_Subnet_CMD_C_2:
+      Type: AWS::EC2::Subnet
+      Title: "Private Subnet C2 (10.64.11.0/26)"
+      Preset: SubnetPrivate
+      Children:
+        - Transit_Gateway_CMD_C
+
+    Transit_Gateway_CMD_C:
+      Type: AWS::EC2::TransitGateway
+      Title: "Transit Gateway Attachment"
+      # PURPOSE: Transit Gateway Attachment in private subnet of AZ C 
+      # for CMD Ops VPC.
+      #====================================================================
